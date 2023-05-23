@@ -56,6 +56,10 @@ class ProjectController extends Controller
         }
         $project->save();
 
+        if(isset($data['technologies'])){
+            $project->technologies()->sync($data['technologies']);
+        }
+
         return redirect()->route('admin.projects.index')->with('message', 'Project create!');
     }
 
