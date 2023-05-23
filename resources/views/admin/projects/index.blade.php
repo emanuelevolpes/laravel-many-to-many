@@ -50,14 +50,14 @@
                                     href="{{ route('admin.projects.show', $project) }}"class="btn btn-sm btn-success">Show</a>
                                 <a href="{{ route('admin.projects.edit', $project) }}"
                                     class="btn btn-sm btn-warning">Edit</a>
-                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                {{-- <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#delete{{ $project->id }}" onclick="event.stopPropagation()">
                                     Delete
-                                </button>
+                                </button> --}}
                             </div>
                         </td>
                     </tr>
-                    <div class="modal fade" id="delete{{ $project->id }}" tabindex="-1"
+                    {{-- <div class="modal fade" id="delete{{ $project->id }}" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -79,7 +79,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 @endforeach
             </tbody>
