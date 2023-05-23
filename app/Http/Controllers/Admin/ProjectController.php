@@ -47,7 +47,9 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        // dd($request->all());
         $data = $request->validated();
+        // dd($data);
         $project = new Project();
         $project->fill($data);
         $project->slug = Str::slug($data['title']);
@@ -84,8 +86,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.edit', compact('project', 'types'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -103,6 +106,8 @@ class ProjectController extends Controller
         if (isset($data['image'])) {
             $project->image = Storage::put('uploads', $data['image']);
         }
+        $technologies = isset($data['technologies']) ? $data['technologies'] : [];
+        $project->technologies()->sync($technologies);
         $project->save();
 
         return redirect()->route('admin.projects.index')->with('message', 'Project editated!');
